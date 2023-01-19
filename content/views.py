@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+from .models import Feed
 
-# Create your views here.
+class Main(APIView):
+    def get(self, request):
+        return render(request, "jinstagram/main.html")
