@@ -51,88 +51,37 @@
     </nav>
     <div style="display: flex; flex-direction: row;text-align: center;justify-content: center;padding-top:70px;background-color:#FAFAFA;">
         <div style="width: 600px;height: 1000px;margin-right:256px;">
-            <div class="feed_box">
-                <div style="display: flex;flex-direction: row;align-items: center;margin: 20px;">
-                    <div class="box">
-                        <img class="profile" src="https://sir.kr/img/common/dow/ico2-dw06.svg">
+            <!-------feed box start------->
+            {% for feeds in feed_list %}
+                <div class="feed_box">
+                    <div style="display: flex;flex-direction: row;align-items: center;margin: 20px;">
+                        <div class="box">
+                            <img class="profile" src="{{ feeds.profile_image }}">
+                        </div>
+                        <div>{{ feeds.user_id }}</div>
                     </div>
-                    <div>bang_climb_account</div>
-                </div>
-                <div> <img style="width:100%" src="https://pds.saramin.co.kr/company/logo/202003/02/q6jmkg_ld73-1eqsslh_logo.jpg"></div>
-                <div style="margin:0 20px;display: flex;flex-direction: row;justify-content: space-between;">
-                    <div>
-                        <span class="material-icons-outlined">favorite_border</span>
-                        <span class="material-icons-outlined">mode_comment</span>
-                        <span class="material-icons-outlined">send</span>
+                    <div> <img style="width:100%" src="{{ feeds.image }}"></div>
+                    <div style="margin:0 20px;display: flex;flex-direction: row;justify-content: space-between;">
+                        <div>
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <span class="material-icons-outlined">mode_comment</span>
+                            <span class="material-icons-outlined">send</span>
+                        </div>
+                        <div>
+                            <span class="material-icons-outlined">bookmark_border</span>
+                        </div>
                     </div>
-                    <div>
-                        <span class="material-icons-outlined">bookmark_border</span>
-                    </div>
-                </div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> Mr.Choonsik <b>외 16명</b>이 좋아합니다.</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 16px;"> bang_climb_account <b> 요세미티 등반하고 싶다.</b></div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>Mr.Choonsik</b> 나도 같이 갈래</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>solb_climb_account</b> 나도 같이 갈래</div>
+                    <div style="margin: 0 20px;text-align: left;font-size: 14px;"> Mr.Choonsik <b>외 {{ feeds.like_count }}명</b>이 좋아합니다.</div>
+                    <div style="margin: 0 20px;text-align: left;font-size: 16px;"> bang_climb_account <b> 요세미티 등반하고 싶다.</b></div>
+                    <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>Mr.Choonsik</b> 나도 같이 갈래</div>
+                    <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>solb_climb_account</b> 나도 같이 갈래</div>
 
-                <div style="border-top:1px solid gray;">
-                    <input type="text" class="form-control" style="box-shadow: none;border:none" placeholder="댓글 달기..">
-                </div>
-            </div>
-            <div class="feed_box">
-                <div style="display: flex;flex-direction: row;align-items: center;margin: 20px;">
-                    <div class="box">
-                        <img class="profile" src="https://sir.kr/img/common/dow/ico2-dw06.svg">
-                    </div>
-                    <div>bang_climb_account</div>
-                </div>
-                <div> <img style="width:100%" src="https://pds.saramin.co.kr/company/logo/202003/02/q6jmkg_ld73-1eqsslh_logo.jpg"></div>
-                <div style="margin:0 20px;display: flex;flex-direction: row;justify-content: space-between;">
-                    <div>
-                        <span class="material-icons-outlined">favorite_border</span>
-                        <span class="material-icons-outlined">mode_comment</span>
-                        <span class="material-icons-outlined">send</span>
-                    </div>
-                    <div>
-                        <span class="material-icons-outlined">bookmark_border</span>
+                    <div style="border-top:1px solid gray;">
+                        <input type="text" class="form-control" style="box-shadow: none;border:none" placeholder="댓글 달기..">
                     </div>
                 </div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> Mr.Choonsik <b>외 16명</b>이 좋아합니다.</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 16px;"> bang_climb_account <b> 요세미티 등반하고 싶다.</b></div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>Mr.Choonsik</b> 나도 같이 갈래</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>solb_climb_account</b> 나도 같이 갈래</div>
-
-                <div style="border-top:1px solid gray;">
-                    <input type="text" class="form-control" style="box-shadow: none;border:none" placeholder="댓글 달기..">
-                </div>
-            </div>
-            <div class="feed_box">
-                <div style="display: flex;flex-direction: row;align-items: center;margin: 20px;">
-                    <div class="box">
-                        <img class="profile" src="https://sir.kr/img/common/dow/ico2-dw06.svg">
-                    </div>
-                    <div>bang_climb_account</div>
-                </div>
-                <div> <img style="width:100%" src="https://pds.saramin.co.kr/company/logo/202003/02/q6jmkg_ld73-1eqsslh_logo.jpg"></div>
-                <div style="margin:0 20px;display: flex;flex-direction: row;justify-content: space-between;">
-                    <div>
-                        <span class="material-icons-outlined">favorite_border</span>
-                        <span class="material-icons-outlined">mode_comment</span>
-                        <span class="material-icons-outlined">send</span>
-                    </div>
-                    <div>
-                        <span class="material-icons-outlined">bookmark_border</span>
-                    </div>
-                </div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> Mr.Choonsik <b>외 16명</b>이 좋아합니다.</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 16px;"> bang_climb_account <b> 요세미티 등반하고 싶다.</b></div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>Mr.Choonsik</b> 나도 같이 갈래</div>
-                <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>solb_climb_account</b> 나도 같이 갈래</div>
-
-                <div style="border-top:1px solid gray;">
-                    <input type="text" class="form-control" style="box-shadow: none;border:none" placeholder="댓글 달기..">
-                </div>
-            </div>
-            
+            {% endfor %}
+            <!-------feed box end------->
         </div>
         <div style="width: 400px;height: 1000px;position: fixed;left:62%">
             <div>
