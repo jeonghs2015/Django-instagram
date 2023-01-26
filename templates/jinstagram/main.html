@@ -58,7 +58,7 @@
             width: 800px;
             height: 600px;
             position: relative;
-            padding: 10px;
+            padding: 10px;   
         }
 
     </style>
@@ -273,7 +273,7 @@
                     <span class="material-icons-outlined">close</span>
                 </div>
             </div>
-            <div class="img_upload_space" style="background-color: orange;width: 780px;height: 500px;"></div>
+            <div class="img_upload_space" style="background-color: orange;width: 778px;height: 540px;margin-top: 7px;"></div>
         </div>
     </div>
 
@@ -299,8 +299,16 @@
         function uploadFiles(e){
             e.stopPropagation();
             e.preventDefault();
+            e.dataTransfer = e.originalEvent.dataTransfer;
+            var files = e.target.files || e.dataTransfer.files;
+            console.log("파일을 올렸습니다" + files[0].name);
+            if(files.length > 1){
+                alert('하나만 올릴 수 있습니다.');
+                return;
+            }
         }
         
+
         
     </script>
 
