@@ -11,11 +11,10 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!----jquery link-->
     <style>
-        .box {
-            width: 40px;
-            height: 40px;
+         .box {
+            width: 150px;
+            height: 150px;
             border-radius: 70%;
-            border: solid 1px black;
             overflow: hidden;
         }
 
@@ -24,14 +23,11 @@
             height: 100%;
             object-fit: cover;
         }
+
         .feed_box {
             margin: 20px 0;
             border: solid 1px gray;
-            background-color: white;
-        }
-
-        input:focus{
-            outline:none
+            background-color: white
         }
 
         .modal_overlay {
@@ -44,9 +40,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(1.5px);
             -webkit-backdrop-filter: blur(1.5px);
+            z-index: 10000;
         }
 
         .modal_window {
@@ -54,11 +51,11 @@
             backdrop-filter: blur(13.5px);
             -webkit-backdrop-filter: blur(13.5px);
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             width: 800px;
             height: 600px;
             position: relative;
-            padding: 10px;   
+            padding: 10px;
         }
 
     </style>
@@ -259,23 +256,59 @@
         </div>
     </div>
     <!---새 게시물 모달창 끝--->
-
-    <div class="modal_overlay">
+    <!---첫번째 모달--->
+    <div id="first_modal" class="modal_overlay">
         <div class="modal_window">
-            <div style="display: flex; flex-direction: row;justify-content: space-between;">
-                <div style="width: 40px; background-color: gray;">
-                    
+            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                <div style="width: 40px; background: gray">
+    
                 </div>
                 <div>
                     새 이미지 업로드
                 </div>
-                <div style="width: 40px; background-color: gray;">
-                    <span class="material-icons-outlined">close</span>
+                <div style="width: 40px; background: gray">
+                    <span class="modal_close material-icons-outlined">close</span>
                 </div>
             </div>
-            <div class="img_upload_space" style="background-color: orange;width: 778px;height: 540px;margin-top: 7px;"></div>
+    
+            <div class="img_upload_space" style="border-top: solid 1px gray;width: 778px; height: 540px;margin-top: 10px">
+    
+            </div>
         </div>
     </div>
+    <!---첫번째 모달--->
+    <!---두번째 모달--->
+    <div id="second_modal" class="modal_overlay">
+        <div class="modal_window">
+            <div style="display: flex; flex-direction: row; justify-content: space-between">
+                <div style="width: 40px; background: gray">
+    
+                </div>
+                <div>
+                    새 이미지 업로드
+                </div>
+                <div style="width: 40px; background: gray">
+                    <span class="modal_close material-icons-outlined">close</span>
+                </div>
+            </div>
+    
+            <div style="border-top: solid 1px gray;display: flex; flex-direction: row;margin-top: 10px">
+                <div class="img_upload_space" style="width: 500px; height: 540px;">
+    
+                </div>
+                <div style="border-left: solid 1px gray">
+                    <div>
+                        <textarea id="input_feed_content" class="form-control" style="width: 276px; height: 400px"
+                                  id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+    <!---두번째 모달--->
+    
 
     <script>
         $('#nav_bar_add_box').click(function(){
