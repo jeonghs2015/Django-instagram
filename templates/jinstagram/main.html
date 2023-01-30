@@ -311,6 +311,8 @@
 </div>
 
     <script>
+        let files;
+
         $('#nav_bar_add_box').click(function(){
            $('.modal_overlay').css({
                 display:'flex'
@@ -319,6 +321,39 @@
                 overflow : 'hidden'
             })
         })
+
+        $('#feed_create_button').click(function(){
+            alert("공유하기 완료" + files[0].name);
+
+            let file = files;
+            let image = files[0].name;
+            let content = $('#input_feed_content').val();
+            let user_id= "bang_climb_account";
+            let profile_image= "https://sir.kr/img/common/dow/ico2-dw06.svg";
+
+            let fd = new FormData();
+
+            fd.append('file',file);
+            fd.append('image',image);
+            fd.append('content',content);
+            fd.append('user_id',user_id);
+            fd.append('profile_image',profile_image);
+
+            $.ajax({
+                url: "/content/upload",
+                data: fd,
+                method : "POST",
+                success : function(data){
+                    console.log("성공");
+                },
+                error : function(request, status, error){
+                    console.log("에러 발생");
+                },
+                compile : function(){
+                    console.log("완료");
+                }
+            })
+        });
 
         $('.img_upload_space')
         .on("dragover", dragOver)
