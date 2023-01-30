@@ -11,7 +11,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!----jquery link-->
     <style>
-         .box {
+        .box {
             width: 150px;
             height: 150px;
             border-radius: 70%;
@@ -57,7 +57,6 @@
             position: relative;
             padding: 10px;
         }
-
     </style>
 </head>
   <body>
@@ -256,61 +255,60 @@
         </div>
     </div>
     <!---새 게시물 모달창 끝--->
-    <!---첫번째 모달--->
-    <div id="first_modal" class="modal_overlay">
-        <div class="modal_window">
-            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                <div style="width: 40px; background: gray">
-    
-                </div>
-                <div>
-                    새 이미지 업로드
-                </div>
-                <div style="width: 40px; background: gray">
-                    <span class="modal_close material-icons-outlined">close</span>
-                </div>
+    <!-- 첫번째 모달 -->
+<div id="first_modal" class="modal_overlay">
+    <div class="modal_window">
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <div style="width: 40px; background: gray">
+
             </div>
-    
-            <div class="img_upload_space" style="border-top: solid 1px gray;width: 778px; height: 540px;margin-top: 10px">
-    
+            <div>
+                새 이미지 업로드
+            </div>
+            <div style="width: 40px; background: gray">
+                <span class="modal_close material-icons-outlined">close</span>
             </div>
         </div>
-    </div>
-    <!---첫번째 모달--->
-    <!---두번째 모달--->
-    <div id="second_modal" class="modal_overlay">
-        <div class="modal_window">
-            <div style="display: flex; flex-direction: row; justify-content: space-between">
-                <div style="width: 40px; background: gray">
-    
-                </div>
-                <div>
-                    새 이미지 업로드
-                </div>
-                <div style="width: 40px; background: gray">
-                    <span class="modal_close material-icons-outlined">close</span>
-                </div>
-            </div>
-    
-            <div style="border-top: solid 1px gray;display: flex; flex-direction: row;margin-top: 10px">
-                <div class="img_upload_space" style="width: 500px; height: 540px;">
-    
-                </div>
-                <div style="border-left: solid 1px gray">
-                    <div>
-                        <textarea id="input_feed_content" class="form-control" style="width: 276px; height: 400px"
-                                  id="exampleFormControlTextarea1" rows="5"></textarea>
-                    </div>
-                    <button id="feed_create_button" type="button" class="btn btn-primary" style="width: 100%">
-                        공유하기
-                    </button>
-                </div>
-    
-            </div>
-    
+
+        <div class="img_upload_space" style="border-top: solid 1px gray;width: 778px; height: 540px;margin-top: 10px">
+
         </div>
     </div>
-    <!---두번째 모달--->
+</div>
+
+<!-- 두번째 모달 -->
+<div id="second_modal" class="modal_overlay">
+    <div class="modal_window">
+        <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <div style="width: 40px; background: gray">
+
+            </div>
+            <div>
+                새 이미지 업로드
+            </div>
+            <div style="width: 40px; background: gray">
+                <span class="modal_close material-icons-outlined">close</span>
+            </div>
+        </div>
+
+        <div style="border-top: solid 1px gray;display: flex; flex-direction: row;margin-top: 10px">
+            <div class="img_upload_space" style="width: 500px; height: 540px;">
+
+            </div>
+            <div style="border-left: solid 1px gray">
+                <div>
+                    <textarea id="input_feed_content" class="form-control" style="width: 276px; height: 400px"
+                              id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <button id="feed_create_button" type="button" class="btn btn-primary" style="width: 100%">
+                    공유하기
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
     <script>
         $('#nav_bar_add_box').click(function(){
@@ -323,54 +321,63 @@
         })
 
         $('.img_upload_space')
-            .on("dragover", dragOver)
-            .on("dragleave", dragOver)
-            .on("drop", uploadFiles);
+        .on("dragover", dragOver)
+        .on("dragleave", dragOver)
+        .on("drop", uploadFiles);
 
-        function dragOver(e){
-            e.stopPropagation();
-            e.preventDefault();
-            if(e.type == "dragover"){
-                $(e.target).css({
-                    "background-color":"black",
-                    "outline-offset":"-20px"
-                });
-            } else {
-                $(e.target).css({
-                    "background-color":"gray",
-                    "outline-offset" : "-10px"
-                });
-            }
+    function dragOver(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        if (e.type == "dragover") {
+            $(e.target).css({
+                "background-color": "black",
+                "outline-offset": "-20px"
+            });
+        } else {
+            $(e.target).css({
+                "outline-offset": "-10px"
+            });
+        }
+    }
+
+    function uploadFiles(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        e.dataTransfer = e.originalEvent.dataTransfer; //2
+        files = e.target.files || e.dataTransfer.files;
+        console.log("뭔가 파일을 올렸네??" + files[0].name);
+        if (files.length > 1) {
+            alert('하나만 올려라.');
+            return;
         }
 
-        function uploadFiles(e){
-            e.stopPropagation();
-            e.preventDefault();
-            e.dataTransfer = e.originalEvent.dataTransfer;
-            var files = e.target.files || e.dataTransfer.files;
-            console.log("파일을 올렸습니다" + files[0].name);
-            if(files.length > 1){
-                alert('하나만 올릴 수 있습니다.');
-                return;
-            }
+        if (files[0].type.match(/image.*/)) {
 
-            if (files[0].type.match(/image.*/)) {
-                $(e.target).css({
-                    "background-image":"url(" + window.URL.createObjectURL(files[0])+ ")",
-                    "outline" : "none",
-                    "background-size" : "100% 100%"
-                });
-            } else {
-                alert('이미지가 아닙니다.');
-                return;
-            }
+            $('#first_modal').css({
+                display: 'none'
+            });
+            $('#second_modal').css({
+                display: 'flex'
+            });
+
+            $('.img_upload_space').css({
+                "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
+                "outline": "none",
+                "background-size": "100%",
+                "background-repeat": "no-repeat",
+                "background-position": "center"
+            });
+        } else {
+            alert('이미지가 아닙니다.');
+            return;
         }
-        
 
+    }
         
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>
-
