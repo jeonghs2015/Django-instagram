@@ -13,8 +13,8 @@ class UploadFeed(APIView):
     def post(self, request):
         file = request.data.get('file')
         image = request.data.get('image')
-
-        print(file)
-        print(image)
+        content = request.data.get('content')
+        user_id = request.data.get('user_id')
+        profile_image = request.data.get('profile_image')
 
         return Response(status=200)

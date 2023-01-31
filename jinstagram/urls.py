@@ -21,5 +21,5 @@ from content.views import Main, UploadFeed
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', Main.as_view()),
-    path('content/upload/', UploadFeed.as_view())
+    path('content/upload', UploadFeed.as_view())
 ]
