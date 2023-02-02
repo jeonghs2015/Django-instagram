@@ -1,7 +1,10 @@
+from uuid import uuid4
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Feed
+import os
+from jinstagram.settings import MEDIA_ROOT
 
 class Main(APIView):
     def get(self, request):
@@ -13,7 +16,7 @@ class UploadFeed(APIView):
     def post(self, request):
 
         file = request.FILES['file']
-        
+
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
         with open(save_path, 'wb+') as destination:
