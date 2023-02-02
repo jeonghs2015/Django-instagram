@@ -11,6 +11,15 @@ class Main(APIView):
 
 class UploadFeed(APIView):
     def post(self, request):
+
+        file = request.FILES['file']
+        
+        uuid_name = uuid4().hex
+        save_path = os.path.join(MEDIA_ROOT, uuid_name)
+        with open(save_path, 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+
         file = request.data.get('file')
         image = request.data.get('image')
         content = request.data.get('content')
