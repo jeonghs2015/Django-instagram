@@ -101,9 +101,15 @@
                     <div style="margin: 0 20px;text-align: left;font-size: 16px;"> bang_climb_account <b> 요세미티 등반하고 싶다.</b></div>
                     <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>Mr.Choonsik</b> 나도 같이 갈래</div>
                     <div style="margin: 0 20px;text-align: left;font-size: 14px;"> <b>solb_climb_account</b> 나도 같이 갈래</div>
-
-                    <div style="border-top:1px solid gray;">
-                        <input type="text" class="form-control" style="box-shadow: none;border:none" placeholder="댓글 달기..">
+                    
+                    <div style="display:flex;flex-direction: row;align-items: center; border-top: solid 1px gray ">
+                        <input id="reply_{{ feed.id }}" type="text" class="form-control"
+                               style="box-shadow: none; border: none; outline: none"
+                               placeholder="댓글 달기..">
+                        <div feed_id="{{ feed.id }}" class="upload_reply"
+                             style="width: 50px;color: cornflowerblue; font-weight: bold">
+                            게시
+                        </div>
                     </div>
                 </div>
             {% endfor %}
